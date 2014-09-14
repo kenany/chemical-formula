@@ -51,6 +51,19 @@ function chemicalFormula(formula) {
 
     // Valid symbol
     if (atomicNumber > -1) {
+      if (i > 0 && formula.charAt(i - 1) === ')') {
+        var mol = chemicalFormula(molecule);
+        forOwn(mol, function(count, key) {
+          if (ret[key]) {
+            ret[key] += count;
+          }
+          else {
+            ret[key] = count;
+          }
+        });
+        molecule = '';
+      }
+
       stack = symbols[atomicNumber - 1];
       if (!withinParenthesis) {
         if (ret[stack]) {

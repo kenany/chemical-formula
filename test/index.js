@@ -17,6 +17,7 @@ test('common organic compounds', function(t) {
     ['C3H4OH(COOH)3', {C: 6, H: 8, O: 7}, 'citric acid'],
     ['HOCH2CH2OH', {H: 6, O: 2, C: 2}, 'ethylene glycol'],
     ['C5H11NO2', {C: 5, H: 11, N: 1, O: 2}, 'ethylene glycol'],
+    ['NH2CH(C4H5N2)COOH', {N: 3, H: 9, C: 6, O: 2}, 'histidine'],
     ['H2O', {H: 2, O: 1}, 'water']
   ]
 
