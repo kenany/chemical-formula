@@ -14,6 +14,7 @@ test('common organic compounds', function(t) {
     ['C12H10', {C: 12, H: 10}, 'acenaphthene'],
     ['C12H6O2', {C: 12, H: 6, O: 2}, 'acenaphthoquinone'],
     ['C6H5Br', {C: 6, H: 5, Br: 1}, 'bromobenzene'],
+    ['C3H4OH(COOH)3', {C: 6, H: 8, O: 7}, 'citric acid'],
     ['HOCH2CH2OH', {H: 6, O: 2, C: 2}, 'ethylene glycol'],
     ['C5H11NO2', {C: 5, H: 11, N: 1, O: 2}, 'ethylene glycol'],
     ['H2O', {H: 2, O: 1}, 'water']

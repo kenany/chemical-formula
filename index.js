@@ -1,6 +1,7 @@
 var symbols = require('chemical-symbols');
 var isFinite = require('lodash.isfinite');
 var indexOf = require('lodash.indexof');
+var forOwn = require('lodash.forown');
 
 function strictParseInt(value) {
   if (/^(\-|\+)?([0-9]+|Infinity)$/.test(value)) {
@@ -19,8 +20,21 @@ function getAtomicNumber(symbol) {
 function chemicalFormula(formula) {
   var ret = {};
   var stack;
+  var molecule = '';
+  var withinParenthesis = false;
 
   for (var i = 0, length = formula.length; i < length;) {
+    if (formula.charAt(i) === '(') {
+      withinParenthesis = true;
+      i++;
+      continue;
+    }
+    else if (formula.charAt(i) === ')') {
+      withinParenthesis = false;
+      i++;
+      continue;
+    }
+
     var lengthOfSymbol;
 
     // First assume two-character element symbol
@@ -38,18 +52,37 @@ function chemicalFormula(formula) {
     // Valid symbol
     if (atomicNumber > -1) {
       stack = symbols[atomicNumber - 1];
-      if (ret[stack]) {
-        ret[stack]++;
+      if (!withinParenthesis) {
+        if (ret[stack]) {
+          ret[stack]++;
+        }
+        else {
+          ret[stack] = 1;
+        }
       }
       else {
-        ret[stack] = 1;
+        molecule += stack;
       }
     }
     else {
       var subscript = strictParseInt(formula.substring(i, i + 2));
       if (isFinite(subscript)) {
-        ret[stack] += subscript - 1;
-        lengthOfSymbol++;
+        if (!withinParenthesis && molecule !== '') {
+          var mol = chemicalFormula(molecule);
+          forOwn(mol, function(count, key) {
+            if (ret[key]) {
+              ret[key] += count * subscript;
+            }
+            else {
+              ret[key] = count * subscript;
+            }
+          });
+          molecule = '';
+        }
+        else {
+          ret[stack] += subscript - 1;
+          lengthOfSymbol++;
+        }
       }
       else {
         subscript = strictParseInt(formula.charAt(i));
