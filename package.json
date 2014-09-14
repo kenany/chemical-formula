@@ -1,0 +1,32 @@
+{
+  "name": "chemical-formula",
+  "version": "0.0.0",
+  "description": "Parse a chemical formula to get a count of each element in a compound",
+  "keywords": [
+    "chemistry"
+  ],
+  "repository": "KenanY/chemical-formula",
+  "license": "MIT",
+  "author": "Kenan Yildirim <kenan@kenany.me> (http://kenany.me/)",
+  "main": "index.js",
+  "files": [
+    "index.js",
+    "LICENSE.txt"
+  ],
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "tape test/index.js"
+  },
+  "dependencies": {
+    "chemical-symbols": "^1.0.0",
+    "lodash.indexof": "^2.4.1",
+    "lodash.isfinite": "^2.4.1"
+  },
+  "devDependencies": {
+    "lodash.foreach": "^2.4.1",
+    "lodash.isfunction": "^2.4.1",
+    "tape": "^2.14.0"
+  }
+}
