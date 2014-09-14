@@ -11,7 +11,7 @@ function strictParseInt(value) {
 }
 
 function getAtomicNumber(symbol) {
-  var index = indexOf(symbols, symbol)
+  var index = indexOf(symbols, symbol);
   return index > -1
     ? index + 1
     : -1;
