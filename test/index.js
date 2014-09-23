@@ -28,3 +28,21 @@ test('common organic compounds', function(t) {
     t.deepEqual(chemicalFormula(fixture[0]), fixture[1], fixture[2]);
   });
 });
+
+test('invalid', function(t) {
+  var COMPOUNDS = [
+    '0C',
+    '2O',
+    '13Li',
+    '2(NO3)',
+    'H(12)'
+  ];
+
+  t.plan(COMPOUNDS.length);
+
+  forEach(COMPOUNDS, function(fixture) {
+    t.throws(function() {
+      chemicalFormula(fixture[0])
+    });
+  });
+});

@@ -80,6 +80,10 @@ function chemicalFormula(formula) {
     else {
       var subscript = strictParseInt(formula.substring(i, i + 2));
       if (isFinite(subscript)) {
+        if (!stack) {
+          throw new Error('Subscript found before element(s)');
+        }
+
         if (!withinParenthesis && molecule !== '') {
           var mol = chemicalFormula(molecule);
           forOwn(mol, function(count, key) {
