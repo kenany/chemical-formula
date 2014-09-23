@@ -37,7 +37,9 @@ test('invalid formulas', function(t) {
     '2(NO3)',
     'H(2)',
     'Ba(12)',
-    'Cr(5)3'
+    'Cr(5)3',
+    'Pb(13)2',
+    'Au(22)11'
   ];
 
   t.plan(INVALID.length);
