@@ -26,6 +26,7 @@ function chemicalFormula(formula) {
   for (var i = 0, length = formula.length; i < length;) {
     if (formula.charAt(i) === '(') {
       withinParenthesis = true;
+      stack = null;
       i++;
       continue;
     }
@@ -104,6 +105,10 @@ function chemicalFormula(formula) {
       else {
         subscript = strictParseInt(formula.charAt(i));
         if (isFinite(subscript)) {
+          if (!stack) {
+            throw new Error('Subscript found before element(s)');
+          }
+
           ret[stack] += subscript - 1;
         }
         else {

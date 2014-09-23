@@ -29,20 +29,22 @@ test('common organic compounds', function(t) {
   });
 });
 
-test('invalid', function(t) {
-  var COMPOUNDS = [
+test('invalid formulas', function(t) {
+  var INVALID = [
     '0C',
     '2O',
     '13Li',
     '2(NO3)',
-    'H(12)'
+    'H(2)',
+    'Ba(12)',
+    'Cr(5)3'
   ];
 
-  t.plan(COMPOUNDS.length);
+  t.plan(INVALID.length);
 
-  forEach(COMPOUNDS, function(fixture) {
+  forEach(INVALID, function(fixture) {
     t.throws(function() {
-      chemicalFormula(fixture[0])
-    });
+      chemicalFormula(fixture);
+    }, /Subscript found before element/);
   });
 });
