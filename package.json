@@ -22,7 +22,7 @@
   "dependencies": {
     "chemical-symbols": "^1.0.0",
     "lodash.forown": "^3.0.1",
-    "lodash.indexof": "^2.4.1",
+    "lodash.indexof": "^3.0.2",
     "lodash.isfinite": "^2.4.1"
   },
   "devDependencies": {
