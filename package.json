@@ -27,7 +27,7 @@
   },
   "devDependencies": {
     "lodash.foreach": "^3.0.2",
-    "lodash.isfunction": "^2.4.1",
+    "lodash.isfunction": "^3.0.2",
     "tape": "^2.14.0"
   }
 }
