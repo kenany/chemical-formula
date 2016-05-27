@@ -50,10 +50,12 @@ function chemicalFormula(formula) {
       lengthOfSymbol = 2;
     }
 
+    var mol;
+
     // Valid symbol
     if (atomicNumber > -1) {
       if (i > 0 && formula.charAt(i - 1) === ')') {
-        var mol = chemicalFormula(molecule);
+        mol = chemicalFormula(molecule);
         forOwn(mol, function(count, key) {
           if (ret[key]) {
             ret[key] += count;
@@ -86,7 +88,7 @@ function chemicalFormula(formula) {
         }
 
         if (!withinParenthesis && molecule !== '') {
-          var mol = chemicalFormula(molecule);
+          mol = chemicalFormula(molecule);
           forOwn(mol, function(count, key) {
             if (ret[key]) {
               ret[key] += count * subscript;

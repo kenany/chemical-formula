@@ -17,7 +17,9 @@
     "test": "test"
   },
   "scripts": {
-    "test": "tape test/index.js"
+    "pretest": "npm run -s lint",
+    "test": "tape test/index.js",
+    "lint": "eslint index.js test/index.js"
   },
   "dependencies": {
     "chemical-symbols": "^1.0.0",
@@ -26,6 +28,8 @@
     "lodash.isfinite": "^3.0.0"
   },
   "devDependencies": {
+    "@kenan/eslint-config": "^1.0.1",
+    "eslint": "^2.10.2",
     "lodash.foreach": "^4.3.0",
     "lodash.isfunction": "^3.0.2",
     "tape": "^4.5.1"
