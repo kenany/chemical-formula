@@ -28,6 +28,6 @@
   "devDependencies": {
     "lodash.foreach": "^4.3.0",
     "lodash.isfunction": "^3.0.2",
-    "tape": "^3.5.0"
+    "tape": "^4.5.1"
   }
 }
