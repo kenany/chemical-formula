@@ -28,7 +28,7 @@
     "lodash.isfinite": "^3.0.0"
   },
   "devDependencies": {
-    "@kenan/eslint-config": "^1.0.1",
+    "@kenan/eslint-config": "^2.0.0",
     "eslint": "^3.0.1",
     "lodash.foreach": "^4.3.0",
     "lodash.isfunction": "^3.0.2",
