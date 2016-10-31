@@ -4,7 +4,7 @@ var indexOf = require('lodash.indexof');
 var forOwn = require('lodash.forown');
 
 function strictParseInt(value) {
-  if (/^(\-|\+)?([0-9]+|Infinity)$/.test(value)) {
+  if (/^(-|\+)?([0-9]+|Infinity)$/.test(value)) {
     return Number(value);
   }
   return NaN;
