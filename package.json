@@ -17,9 +17,11 @@
     "test": "test"
   },
   "scripts": {
+    "lint": "eslint *.js test/*.js",
+    "tests-only": "tape test/index.js",
+    "coverage": "nyc npm run -s tests-only",
     "pretest": "npm run -s lint",
-    "test": "tape test/index.js",
-    "lint": "eslint index.js test/index.js"
+    "test": "npm run -s tests-only"
   },
   "dependencies": {
     "chemical-symbols": "^1.0.0",
@@ -32,6 +34,7 @@
     "eslint": "^3.0.1",
     "lodash.foreach": "^4.3.0",
     "lodash.isfunction": "^3.0.2",
+    "nyc": "^8.4.0",
     "tape": "^4.5.1"
   }
 }
