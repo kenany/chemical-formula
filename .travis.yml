@@ -8,8 +8,6 @@ matrix:
       env: TEST=true
     - node_js: '7'
       env: TEST=true
-    - node_js: '0.12'
-      env: TEST=true
 before_install:
   - npm install -g npm
   - npm --version
