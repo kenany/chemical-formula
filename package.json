@@ -30,8 +30,8 @@
     "lodash.isfinite": "^3.0.0"
   },
   "devDependencies": {
-    "@kenan/eslint-config": "^4.0.0",
-    "eslint": "^3.0.1",
+    "@kenan/eslint-config": "^5.0.0",
+    "eslint": "^4.1.1",
     "lodash.foreach": "^4.3.0",
     "lodash.isfunction": "^3.0.2",
     "nyc": "^11.0.3",
