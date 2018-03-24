@@ -18,6 +18,17 @@ function chemicalFormula(formula) {
   }
   return formula;
 
+  // ret Formula object holds dictionary to be returned
+  var ret = new Formula();
+
+  // loop finds matching brackets. Contents are elaborated by multiplying with
+  // multiplier. The bracket is replaced in original text
+  while (true) {
+    // find innermost MATCHING brackets. Exit loop if no matching brackets exist
+    var found = formula.match(/[{][A-Za-z0-9]+[}]|[[][A-Za-z0-9]+[\]]|[(][A-Za-z0-9]+[)]/i);
+    if (found === null) break;
+
+  }
 }
 
 module.exports = chemicalFormula;
