@@ -1,7 +1,5 @@
-var symbols = require('chemical-symbols');
-var isFinite = require('lodash.isfinite');
 var indexOf = require('lodash.indexof');
-var forOwn = require('lodash.forown');
+var symbols = require('chemical-symbols');
 
 function strictParseInt(value) {
   if (/^(-|\+)?([0-9]+|Infinity)$/.test(value)) {
