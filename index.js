@@ -16,7 +16,6 @@ function chemicalFormula(formula) {
   if (formula.match(/[^A-Za-z0-9{}[\]()]/g) || formula.match(/[a-z]{2,}/) || formula.match(/^\d/)) {
     throw new Error('Subscript found before element(s)');
   }
-  return formula;
 
   // ret Formula object holds dictionary to be returned
   var ret = new Formula();
@@ -44,7 +43,7 @@ function chemicalFormula(formula) {
     // replace found brakcet with expanded contents
     formula = formula.slice(0, found.index) + allElements.join('') + formula.slice(found.index + found[0].length + multiplier.length);
   }
-  //check for any remaining brackets
+  // Check for any remaining brackets
   if (formula.match(/[{}()[\]]/g)) throw new Error('Invalid parentheses matching');
 
   formula.match(/([A-Z][a-z]?)(\d*)/g).forEach(function(val) {
