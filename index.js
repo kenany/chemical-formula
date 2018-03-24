@@ -1,13 +1,6 @@
 var indexOf = require('lodash.indexof');
 var symbols = require('chemical-symbols');
 
-function strictParseInt(value) {
-  if (/^(-|\+)?([0-9]+|Infinity)$/.test(value)) {
-    return Number(value);
-  }
-  return NaN;
-}
-
 function getAtomicNumber(symbol) {
   var index = indexOf(symbols, symbol);
   return index > -1
