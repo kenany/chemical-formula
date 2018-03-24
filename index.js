@@ -38,8 +38,11 @@ function chemicalFormula(formula) {
 }
 
 // Class definition for Formula object
-function Formula() {
+function Formula(val, multiplier) {
   this.dict = {};
+  if (val) {
+    this.parseElement(val, multiplier);
+  }
   return this;
 }
 Formula.prototype.parseElement = function(val, multiplier = 1) {
