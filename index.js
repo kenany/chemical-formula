@@ -37,4 +37,26 @@ function chemicalFormula(formula) {
   }
 }
 
+// Class definition for Formula object
+function Formula() {
+  this.dict = {};
+  return this;
+}
+Formula.prototype.parseElement = function(val, multiplier = 1) {
+  // multiplies given value by the multiplier in the dict variable
+  // slice(1) gets rid of "whole match" wchih is element 0.
+  var currElem = val.match(/([A-Z][a-z]?)(\d*)/).slice(1);
+  if (getAtomicNumber(currElem[0]) === -1) throw new Error('Invalid chemical element \'' + currElem[0] + '\'');
+  var subscript = currElem[1] || 1;
+  var newSum = parseFloat(subscript) * multiplier;
+  this.dict[currElem[0]] = this.dict[currElem[0]] ? this.dict[currElem[0]] + newSum : newSum;
+  return this.dict;
+};
+Formula.prototype.chemFormula = function() {
+  // make string from dictionary (so {C: 2, H: 2} ==> "C2H2")
+  var ret = '';
+  for (var i in this.dict) ret += i + this.dict[i];
+  return ret;
+};
+
 module.exports = chemicalFormula;
