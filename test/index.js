@@ -19,7 +19,17 @@ test('common organic compounds', function(t) {
     ['C5H11NO2', {C: 5, H: 11, N: 1, O: 2}, 'ethylene glycol'],
     ['CH3CH(CH3)CH3', {C: 4, H: 10}, '2-methylpropene'],
     ['NH2CH(C4H5N2)COOH', {N: 3, H: 9, C: 6, O: 2}, 'histidine'],
-    ['H2O', {H: 2, O: 1}, 'water']
+    ['H2O', {H: 2, O: 1}, 'water'],
+    ['B2H6', {B: 2, H: 6}, 'diborane'],
+    ['C6H12O6', {C: 6, H: 12, O: 6}, 'glucose'],
+    ['Mo(CO)6', {Mo: 1, C: 6, O: 6}, 'Molybdenum Hexacarbonyl'],
+    ['Mg(OH)2', {Mg: 1, O: 2, H: 2}, 'magnesium hydroxide'],
+    ['Fe(C5H5)2', {Fe: 1, C: 10, H: 10}, 'ferrocene'],
+    ['(C5H5)Fe(CO)2CH3', {C: 8, H: 8, Fe: 1, O: 1}, 'cyclopentadienyliron dicarbonyl dimer'],
+    ['Pd[P(C6H5)3]4', {Pd: 1, P: 4, C: 72, H: 60}, 'tetrakis(triphenylphosphine)palladium(0)'],
+    ['K4[ON(SO3)2]2', {K: 4, O: 14, N: 2, S: 4}, 'Fremy\'s salt'],
+    ['{[Co(NH3)4(OH)2]3Co}(SO4)3', {Co: 4, H: 42, N: 12, O: 18, S: 3}, 'hexol sulphate'],
+    ['As2{Be4C5[BCo3(CO2)3]2}4Cu5', {As: 2, Be: 16, C: 44, B: 8, Co: 24, O: 48, Cu: 5}, 'Weird Molecule']
   ];
 
   t.plan(COMPOUNDS.length);

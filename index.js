@@ -1,14 +1,5 @@
-var symbols = require('chemical-symbols');
-var isFinite = require('lodash.isfinite');
 var indexOf = require('lodash.indexof');
-var forOwn = require('lodash.forown');
-
-function strictParseInt(value) {
-  if (/^(-|\+)?([0-9]+|Infinity)$/.test(value)) {
-    return Number(value);
-  }
-  return NaN;
-}
+var symbols = require('chemical-symbols');
 
 function getAtomicNumber(symbol) {
   var index = indexOf(symbols, symbol);
@@ -18,111 +9,71 @@ function getAtomicNumber(symbol) {
 }
 
 function chemicalFormula(formula) {
-  var ret = {};
-  var stack;
-  var molecule = '';
-  var withinParenthesis = false;
+  // This function takes a formula eg C6H12[C2H4]2O5 and converts it to dictionary
+  // of individual elements.
 
-  for (var i = 0, length = formula.length; i < length;) {
-    if (formula.charAt(i) === '(') {
-      withinParenthesis = true;
-      stack = null;
-      i++;
-      continue;
-    }
-    else if (formula.charAt(i) === ')') {
-      withinParenthesis = false;
-      i++;
-      continue;
-    }
-
-    var lengthOfSymbol;
-
-    // First assume two-character element symbol
-    var atomicNumber = getAtomicNumber(formula.substring(i, i + 2));
-
-    // Element's symbol is a single character
-    if (atomicNumber === -1) {
-      atomicNumber = getAtomicNumber(formula.charAt(i));
-      lengthOfSymbol = 1;
-    }
-    else {
-      lengthOfSymbol = 2;
-    }
-
-    var mol;
-
-    // Valid symbol
-    if (atomicNumber > -1) {
-      if (i > 0 && formula.charAt(i - 1) === ')') {
-        mol = chemicalFormula(molecule);
-        forOwn(mol, function(count, key) {
-          if (ret[key]) {
-            ret[key] += count;
-          }
-          else {
-            ret[key] = count;
-          }
-        });
-        molecule = '';
-      }
-
-      stack = symbols[atomicNumber - 1];
-      if (!withinParenthesis) {
-        if (ret[stack]) {
-          ret[stack]++;
-        }
-        else {
-          ret[stack] = 1;
-        }
-      }
-      else {
-        molecule += stack;
-      }
-    }
-    else {
-      var subscript = strictParseInt(formula.substring(i, i + 2));
-      if (isFinite(subscript)) {
-        if (!stack) {
-          throw new Error('Subscript found before element(s)');
-        }
-
-        if (!withinParenthesis && molecule !== '') {
-          mol = chemicalFormula(molecule);
-          forOwn(mol, function(count, key) {
-            if (ret[key]) {
-              ret[key] += count * subscript;
-            }
-            else {
-              ret[key] = count * subscript;
-            }
-          });
-          molecule = '';
-        }
-        else {
-          ret[stack] += subscript - 1;
-          lengthOfSymbol++;
-        }
-      }
-      else {
-        subscript = strictParseInt(formula.charAt(i));
-        if (isFinite(subscript)) {
-          if (!stack) {
-            throw new Error('Subscript found before element(s)');
-          }
-
-          ret[stack] += subscript - 1;
-        }
-        else {
-          ret[stack]++;
-        }
-      }
-    }
-
-    i += lengthOfSymbol;
+  // Basic validation of formula (check for non alphanumeric+bracket characters)
+  if (formula.match(/[^A-Za-z0-9{}[\]()]/g) || formula.match(/[a-z]{2,}/) || formula.match(/^\d/)) {
+    throw new Error('Subscript found before element(s)');
   }
 
-  return ret;
+  // ret Formula object holds dictionary to be returned
+  var ret = new Formula();
+
+  // loop finds matching brackets. Contents are elaborated by multiplying with
+  // multiplier. The bracket is replaced in original text
+  while (true) {
+    // find innermost MATCHING brackets. Exit loop if no matching brackets exist
+    var found = formula.match(/[{][A-Za-z0-9]+[}]|[[][A-Za-z0-9]+[\]]|[(][A-Za-z0-9]+[)]/i);
+    if (found === null) break;
+    // find the multiplier after formula. If not given, assume it's 1
+    var multiplier = formula.slice(found.index + found[0].length).match(/^\d+/) || {'0': 1, length: 0};
+    // get a list of all elements ["C12", "H12", "O6"] in current pair of matching brackets
+    var allElements = found[0].match(/([A-Z][a-z]?)(\d*)/g);
+    // if no elements matched, then bracket is invalid (e.g. "{5}" is invalid)
+    if (allElements === null) throw new Error('Subscript found before element(s)');
+
+    // multiply each element in array by multiplier (eg. "C2" and multiplier is 2, make it C4)
+    allElements = allElements.map(function(val) {
+      // make new formula for current value, parse element with multplier. return string
+      return new Formula(val, multiplier[0]).chemFormula();
+    });
+    // replace found brakcet with expanded contents
+    formula = formula.slice(0, found.index) + allElements.join('') + formula.slice(found.index + found[0].length + multiplier.length);
+  }
+  // Check for any remaining brackets
+  if (formula.match(/[{}()[\]]/g)) throw new Error('Invalid parentheses matching');
+
+  formula.match(/([A-Z][a-z]?)(\d*)/g).forEach(function(val) {
+    ret.parseElement(val);
+  });
+
+  return ret.dict;
 }
+
+// Class definition for Formula object
+function Formula(val, multiplier) {
+  this.dict = {};
+  if (val) {
+    this.parseElement(val, multiplier);
+  }
+  return this;
+}
+Formula.prototype.parseElement = function(val, multiplier = 1) {
+  // multiplies given value by the multiplier in the dict variable
+  // slice(1) gets rid of "whole match" wchih is element 0.
+  var currElem = val.match(/([A-Z][a-z]?)(\d*)/).slice(1);
+  if (getAtomicNumber(currElem[0]) === -1) throw new Error('Invalid chemical element \'' + currElem[0] + '\'');
+  var subscript = currElem[1] || 1;
+  var newSum = parseFloat(subscript) * multiplier;
+  this.dict[currElem[0]] = this.dict[currElem[0]] ? this.dict[currElem[0]] + newSum : newSum;
+  return this.dict;
+};
+Formula.prototype.chemFormula = function() {
+  // make string from dictionary (so {C: 2, H: 2} ==> "C2H2")
+  var ret = '';
+  for (var i in this.dict) ret += i + this.dict[i];
+  return ret;
+};
 
 module.exports = chemicalFormula;
