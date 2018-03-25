@@ -25,7 +25,7 @@ test('common organic compounds', function(t) {
     ['Mo(CO)6', {Mo: 1, C: 6, O: 6}, 'Molybdenum Hexacarbonyl'],
     ['Mg(OH)2', {Mg: 1, O: 2, H: 2}, 'magnesium hydroxide'],
     ['Fe(C5H5)2', {Fe: 1, C: 10, H: 10}, 'ferrocene'],
-    ['(C5H5)Fe(CO)2CH3', {C: 8, H: 8, Fe: 1, O: 1}, 'cyclopentadienyliron dicarbonyl dimer'],
+    ['(C5H5)Fe(CO)2CH3', {C: 8, H: 8, Fe: 1, O: 2}, 'cyclopentadienyliron dicarbonyl dimer'],
     ['Pd[P(C6H5)3]4', {Pd: 1, P: 4, C: 72, H: 60}, 'tetrakis(triphenylphosphine)palladium(0)'],
     ['K4[ON(SO3)2]2', {K: 4, O: 14, N: 2, S: 4}, 'Fremy\'s salt'],
     ['{[Co(NH3)4(OH)2]3Co}(SO4)3', {Co: 4, H: 42, N: 12, O: 18, S: 3}, 'hexol sulphate'],
