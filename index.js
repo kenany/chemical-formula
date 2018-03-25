@@ -31,7 +31,7 @@ function chemicalFormula(formula) {
     // get a list of all elements ["C12", "H12", "O6"] in current pair of matching brackets
     var allElements = found[0].match(/([A-Z][a-z]?)(\d*)/g);
     // if no elements matched, then bracket is invalid (e.g. "{5}" is invalid)
-    if (allElements == null) throw new Error('Subscript found before element(s)');
+    if (allElements === null) throw new Error('Subscript found before element(s)');
 
     // multiply each element in array by multiplier (eg. "C2" and multiplier is 2, make it C4)
     allElements = allElements.map(function(val) {
