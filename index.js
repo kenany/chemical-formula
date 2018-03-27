@@ -63,8 +63,7 @@ Formula.prototype.parseElement = function(val, multiplier) {
   // multiplies given value by the multiplier in the dict variable
   // slice(1) gets rid of "whole match" wchih is element 0.
   multiplier = multiplier || 1;
-  
-  var currElem= val.match(/([A-Z][a-z]?)(\d*)/).slice(1);
+  var currElem = val.match(/([A-Z][a-z]?)(\d*)/).slice(1);
   if (getAtomicNumber(currElem[0]) === -1) throw new Error('Invalid chemical element \'' + currElem[0] + '\'');
   var subscript = currElem[1] || 1;
   var newSum = parseFloat(subscript) * multiplier;
