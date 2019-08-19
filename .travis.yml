@@ -10,6 +10,8 @@ matrix:
 before_install:
   - npm install -g npm
   - npm --version
+before_script:
+  - npm ls
 script:
   - 'if [ -n "${LINT-}" ]; then npm run -s lint ; fi'
   - 'if [ -n "${COVERAGE-}" ]; then npm run -s coverage ; fi'
