@@ -1,7 +1,5 @@
 # chemical-formula
 
-[![Build Status](https://img.shields.io/travis/KenanY/chemical-formula.svg)](https://travis-ci.org/KenanY/chemical-formula)
-
 Parse a chemical formula to get a count of each element in a compound.
 
 ## Example

@@ -17,11 +17,9 @@
     "test": "test"
   },
   "scripts": {
+    "coverage": "nyc npm test",
     "lint": "eslint *.js test/*.js",
-    "tests-only": "tape test/index.js",
-    "coverage": "nyc npm run -s tests-only",
-    "pretest": "npm run -s lint",
-    "test": "npm run -s tests-only"
+    "test": "tape test/index.js"
   },
   "dependencies": {
     "chemical-symbols": "^2.0.0",
