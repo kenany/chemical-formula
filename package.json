@@ -34,6 +34,6 @@
     "lodash.foreach": "4.5.0",
     "lodash.isfunction": "3.0.9",
     "nyc": "15.0.1",
-    "tape": "4.13.2"
+    "tape": "4.13.3"
   }
 }
