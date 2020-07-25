@@ -16,6 +16,9 @@
   "directories": {
     "test": "test"
   },
+  "engines": {
+    "node": "10 || 12 || >=14"
+  },
   "scripts": {
     "coverage": "nyc npm test",
     "lint": "eslint *.js test/*.js",

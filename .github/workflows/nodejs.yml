@@ -5,7 +5,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        node-version: [8, 10, 12]
+        node-version: [10, 12]
         os: [macOS-latest, ubuntu-latest, windows-latest]
     steps:
     - uses: actions/checkout@v2
