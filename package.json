@@ -17,7 +17,7 @@
     "test": "test"
   },
   "engines": {
-    "node": "10 || 12 || >=14"
+    "node": "12 || 14 || >=16"
   },
   "scripts": {
     "coverage": "nyc npm test",
