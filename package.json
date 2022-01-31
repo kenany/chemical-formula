@@ -7,7 +7,7 @@
   ],
   "repository": "KenanY/chemical-formula",
   "license": "MIT",
-  "author": "Kenan Yildirim <kenan@kenany.me> (http://kenany.me/)",
+  "author": "Kenan Yildirim <kenan@kenany.me> (https://kenany.me/)",
   "main": "index.js",
   "files": [
     "index.js",
@@ -32,11 +32,10 @@
   },
   "devDependencies": {
     "@kenan/eslint-config": "9.0.4",
-    "@kenan/renovate-config": "1.5.1",
     "eslint": "^7.32.0",
     "lodash.foreach": "4.5.0",
     "lodash.isfunction": "3.0.9",
     "nyc": "15.1.0",
-    "tape": "^5.3.2"
+    "tape": "^5.5.0"
   }
 }
