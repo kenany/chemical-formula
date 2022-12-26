@@ -1,7 +1,7 @@
-var symbols = require('chemical-symbols');
-var isFinite = require('lodash.isfinite');
-var indexOf = require('lodash.indexof');
-var forOwn = require('lodash.forown');
+const symbols = require('chemical-symbols');
+const isFinite = require('lodash.isfinite');
+const indexOf = require('lodash.indexof');
+const forOwn = require('lodash.forown');
 
 function strictParseInt(value) {
   if (/^(-|\+)?([0-9]+|Infinity)$/.test(value)) {
@@ -11,19 +11,19 @@ function strictParseInt(value) {
 }
 
 function getAtomicNumber(symbol) {
-  var index = indexOf(symbols, symbol);
+  const index = indexOf(symbols, symbol);
   return index > -1
     ? index + 1
     : -1;
 }
 
 function chemicalFormula(formula) {
-  var ret = {};
-  var stack;
-  var molecule = '';
-  var withinParenthesis = false;
+  const ret = {};
+  let stack;
+  let molecule = '';
+  let withinParenthesis = false;
 
-  for (var i = 0, length = formula.length; i < length;) {
+  for (let i = 0, length = formula.length; i < length;) {
     if (formula.charAt(i) === '(') {
       withinParenthesis = true;
       stack = null;
@@ -36,10 +36,10 @@ function chemicalFormula(formula) {
       continue;
     }
 
-    var lengthOfSymbol;
+    let lengthOfSymbol;
 
     // First assume two-character element symbol
-    var atomicNumber = getAtomicNumber(formula.substring(i, i + 2));
+    let atomicNumber = getAtomicNumber(formula.substring(i, i + 2));
 
     // Element's symbol is a single character
     if (atomicNumber === -1) {
@@ -50,7 +50,7 @@ function chemicalFormula(formula) {
       lengthOfSymbol = 2;
     }
 
-    var mol;
+    let mol;
 
     // Valid symbol
     if (atomicNumber > -1) {
@@ -81,7 +81,7 @@ function chemicalFormula(formula) {
       }
     }
     else {
-      var subscript = strictParseInt(formula.substring(i, i + 2));
+      let subscript = strictParseInt(formula.substring(i, i + 2));
       if (isFinite(subscript)) {
         if (!stack) {
           throw new Error('Subscript found before element(s)');

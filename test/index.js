@@ -1,8 +1,8 @@
-var test = require('tape');
-var isFunction = require('lodash.isfunction');
-var forEach = require('lodash.foreach');
+const test = require('tape');
+const isFunction = require('lodash.isfunction');
+const forEach = require('lodash.foreach');
 
-var chemicalFormula = require('../');
+const chemicalFormula = require('../');
 
 test('exports a function', function(t) {
   t.plan(1);
@@ -10,7 +10,7 @@ test('exports a function', function(t) {
 });
 
 test('common organic compounds', function(t) {
-  var COMPOUNDS = [
+  const COMPOUNDS = [
     ['C19H29COOH', { C: 20, H: 30, O: 2 }, 'abietic acid'],
     ['C12H10', { C: 12, H: 10 }, 'acenaphthene'],
     ['C12H6O2', { C: 12, H: 6, O: 2 }, 'acenaphthoquinone'],
@@ -31,7 +31,7 @@ test('common organic compounds', function(t) {
 });
 
 test('invalid formulas', function(t) {
-  var INVALID = [
+  const INVALID = [
     '0C',
     '2O',
     '13Li',
