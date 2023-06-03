@@ -5,11 +5,12 @@
   "keywords": [
     "chemistry"
   ],
-  "repository": "KenanY/chemical-formula",
+  "repository": "github:kenany/chemical-formula",
   "license": "MIT",
   "author": "Kenan Yildirim <kenan@kenany.me> (https://kenany.me/)",
   "main": "index.js",
   "files": [
+    "CHANGELOG.md",
     "index.js",
     "LICENSE.txt"
   ],
@@ -17,12 +18,13 @@
     "test": "test"
   },
   "engines": {
-    "node": "14 || 16 || >=18"
+    "node": "16 || 18 || >=20"
   },
   "scripts": {
     "coverage": "nyc npm test",
     "lint": "eslint *.js test/*.js",
-    "test": "tape test/index.js"
+    "test": "tape test/index.js",
+    "release": "semantic-release"
   },
   "dependencies": {
     "chemical-symbols": "^2.0.0",
@@ -32,10 +34,14 @@
   },
   "devDependencies": {
     "@kenan/eslint-config": "^10.0.2",
+    "@semantic-release/changelog": "^6.0.3",
+    "@semantic-release/git": "^10.0.1",
+    "conventional-changelog-conventionalcommits": "^5.0.0",
     "eslint": "^8.41.0",
     "lodash.foreach": "^4.5.0",
     "lodash.isfunction": "^3.0.9",
     "nyc": "^15.1.0",
+    "semantic-release": "^21.0.3",
     "tape": "^5.6.3"
   }
 }

@@ -1,3 +1,5 @@
+'use strict';
+
 const symbols = require('chemical-symbols');
 const isFinite = require('lodash.isfinite');
 const indexOf = require('lodash.indexof');

@@ -1,0 +1,27 @@
+name: release
+on:
+  push:
+    branches:
+      - master
+jobs:
+  release:
+    name: release
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/setup-node@v3.6.0
+        with:
+          node-version: 20
+      - name: Update npm
+        run: |
+          npm install -g npm
+          npm --version
+      - uses: actions/checkout@v3.5.2
+      - name: Install dependencies
+        uses: bahmutov/npm-install@v1.8.32
+        with:
+          useLockFile: false
+      - name: Release
+        run: npm run release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}

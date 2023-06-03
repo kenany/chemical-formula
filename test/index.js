@@ -1,3 +1,5 @@
+'use strict';
+
 const test = require('tape');
 const isFunction = require('lodash.isfunction');
 const forEach = require('lodash.foreach');
