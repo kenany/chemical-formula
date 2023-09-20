@@ -1,3 +1,14 @@
+## [4.0.0](https://github.com/kenany/chemical-formula/compare/3.0.0...4.0.0) (2023-09-20)
+
+
+### ⚠ BREAKING CHANGES
+
+* Node.js v16 is no longer supported.
+
+### Features
+
+* drop Node.js v16 support ([4e3c9ec](https://github.com/kenany/chemical-formula/commit/4e3c9ecde8cea3a4fe17747fd19b9b5499c4561b))
+
 ## [3.0.0](https://github.com/kenany/chemical-formula/compare/2.0.0...3.0.0) (2023-06-03)
 
 
