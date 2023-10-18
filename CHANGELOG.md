@@ -1,3 +1,10 @@
+## [4.0.1](https://github.com/kenany/chemical-formula/compare/4.0.0...4.0.1) (2023-10-18)
+
+
+### Bug Fixes
+
+* **deps:** chemical-symbols@3.0.0 ([9c30ce6](https://github.com/kenany/chemical-formula/commit/9c30ce669d75b1d37247fc1e3f3f21b7bccd044f))
+
 ## [4.0.0](https://github.com/kenany/chemical-formula/compare/3.0.0...4.0.0) (2023-09-20)
 
 
