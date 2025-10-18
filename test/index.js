@@ -32,6 +32,73 @@ test('common organic compounds', function(t) {
   });
 });
 
+test('nested subscripts in parentheses', function(t) {
+  const COMPOUNDS = [
+    // Metal sulfates - critical bug cases
+    ['Al2(SO4)3', { Al: 2, S: 3, O: 12 }, 'aluminum sulfate'],
+    ['Fe2(SO4)3', { Fe: 2, S: 3, O: 12 }, 'iron(III) sulfate'],
+    ['Cr2(SO4)3', { Cr: 2, S: 3, O: 12 }, 'chromium(III) sulfate'],
+    ['K2SO4', { K: 2, S: 1, O: 4 }, 'potassium sulfate (baseline - no parens)'],
+
+    // Hydrated complexes - critical bug cases
+    ['Fe(H2O)6', { Fe: 1, H: 12, O: 6 }, 'iron hexahydrate'],
+    ['Co(H2O)6', { Co: 1, H: 12, O: 6 }, 'cobalt hexahydrate'],
+    ['Cu(NH3)4', { Cu: 1, N: 4, H: 12 }, 'tetraamminecopper(II)'],
+    ['Fe(CN)6', { Fe: 1, C: 6, N: 6 }, 'hexacyanoferrate'],
+
+    // Hydroxides - common compounds
+    ['Ca(OH)2', { Ca: 1, O: 2, H: 2 }, 'calcium hydroxide'],
+    ['Mg(OH)2', { Mg: 1, O: 2, H: 2 }, 'magnesium hydroxide'],
+    ['Al(OH)3', { Al: 1, O: 3, H: 3 }, 'aluminum hydroxide'],
+    ['Ba(OH)2', { Ba: 1, O: 2, H: 2 }, 'barium hydroxide'],
+
+    // Nitrates - common compounds
+    ['Mg(NO3)2', { Mg: 1, N: 2, O: 6 }, 'magnesium nitrate'],
+    ['Ca(NO3)2', { Ca: 1, N: 2, O: 6 }, 'calcium nitrate'],
+    ['Ba(NO3)2', { Ba: 1, N: 2, O: 6 }, 'barium nitrate'],
+
+    // Phosphates
+    ['Ca3(PO4)2', { Ca: 3, P: 2, O: 8 }, 'calcium phosphate'],
+
+    // Edge cases - parentheses without explicit multiplier
+    ['Fe(H2O)', { Fe: 1, H: 2, O: 1 }, 'iron hydrate (no multiplier defaults to 1)'],
+    ['Ca(OH)', { Ca: 1, O: 1, H: 1 }, 'calcium hydroxyl (no multiplier)'],
+
+    // Nested parentheses
+    ['Mg3(Fe(CN)6)2', { Mg: 3, Fe: 2, C: 12, N: 12 }, 'magnesium ferrocyanide (doubly nested)']
+  ];
+
+  t.plan(COMPOUNDS.length);
+
+  forEach(COMPOUNDS, function(fixture) {
+    t.deepEqual(chemicalFormula(fixture[0]), fixture[1], fixture[2]);
+  });
+});
+
+test('error handling for invalid formulas', function(t) {
+  t.plan(5);
+
+  t.throws(function() {
+    chemicalFormula('Ca(OH');
+  }, /Unmatched parentheses/, 'unmatched opening parenthesis');
+
+  t.throws(function() {
+    chemicalFormula('CaOH)');
+  }, /Invalid character/, 'unmatched closing parenthesis');
+
+  t.throws(function() {
+    chemicalFormula('');
+  }, /Invalid chemical formula/, 'empty string');
+
+  t.throws(function() {
+    chemicalFormula('H2O!');
+  }, /Invalid character/, 'invalid character at end');
+
+  t.throws(function() {
+    chemicalFormula('H2@O');
+  }, /Invalid character/, 'invalid character in middle');
+});
+
 test('invalid formulas', function(t) {
   const INVALID = [
     '0C',
@@ -50,6 +117,6 @@ test('invalid formulas', function(t) {
   forEach(INVALID, function(fixture) {
     t.throws(function() {
       chemicalFormula(fixture);
-    }, /Subscript found before element/);
+    }, /Subscript found before element|Invalid character/, 'should throw for ' + fixture);
   });
 });
