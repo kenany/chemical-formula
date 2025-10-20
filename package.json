@@ -18,11 +18,11 @@
     "test": "test"
   },
   "engines": {
-    "node": "18 || >=20"
+    "node": "20 || 22 || >=24"
   },
   "scripts": {
     "coverage": "nyc npm test",
-    "lint": "eslint *.js test/*.js",
+    "lint": "biome check .",
     "test": "tape test/index.js",
     "release": "semantic-release"
   },
@@ -32,11 +32,11 @@
     "lodash.isfinite": "^3.3.2"
   },
   "devDependencies": {
-    "@kenan/eslint-config": "^11.1.18",
+    "@biomejs/biome": "2.2.6",
+    "@kenan/biome-config": "1.0.4",
     "@semantic-release/changelog": "^6.0.3",
     "@semantic-release/git": "^10.0.1",
     "conventional-changelog-conventionalcommits": "^9.1.0",
-    "eslint": "^8.57.1",
     "lodash.foreach": "^4.5.0",
     "lodash.isfunction": "^3.0.9",
     "nyc": "^17.1.0",

@@ -1,5 +1,3 @@
-'use strict';
-
 const symbols = require('chemical-symbols');
 const isFinite = require('lodash.isfinite');
 const indexOf = require('lodash.indexof');
@@ -15,7 +13,7 @@ function strictParseInt(value) {
   if (/^(-|\+)?([0-9]+|Infinity)$/.test(value)) {
     return Number(value);
   }
-  return NaN;
+  return Number.NaN;
 }
 
 /**
@@ -131,7 +129,7 @@ function chemicalFormula(formula) {
           i++;
         }
 
-        const groupMultiplier = numStr ? strictParseInt(numStr) : 1;
+        const groupMultiplier = numStr.length ? strictParseInt(numStr) : 1;
         if (!isFinite(groupMultiplier) || groupMultiplier < 1) {
           throw new Error('Invalid subscript in formula');
         }
@@ -139,8 +137,7 @@ function chemicalFormula(formula) {
         // Recursively parse the group content with cascaded multiplier
         // This ensures subscripts inside are multiplied correctly
         parseGroup(groupContent, multiplier * groupMultiplier);
-      }
-      else if (/[A-Z]/.test(char)) {
+      } else if (/[A-Z]/.test(char)) {
         // Parse element symbol (starts with uppercase letter)
         let element = char;
         i++;
@@ -153,7 +150,7 @@ function chemicalFormula(formula) {
 
         // Validate that the element symbol exists in the periodic table
         if (getAtomicNumber(element) === -1) {
-          throw new Error('Unknown element: ' + element);
+          throw new Error(`Unknown element: ${element}`);
         }
 
         // Parse the subscript number following the element
@@ -163,7 +160,7 @@ function chemicalFormula(formula) {
           i++;
         }
 
-        const count = numStr ? strictParseInt(numStr) : 1;
+        const count = numStr.length ? strictParseInt(numStr) : 1;
         if (!isFinite(count) || count < 1) {
           throw new Error('Invalid subscript in formula');
         }
@@ -171,9 +168,8 @@ function chemicalFormula(formula) {
         // Add element with count multiplied by cascaded multiplier
         // This is where the multiplier from parent groups is applied
         addElement(element, count * multiplier);
-      }
-      else {
-        throw new Error('Invalid character in formula: ' + char);
+      } else {
+        throw new Error(`Invalid character in formula: ${char}`);
       }
     }
   }
