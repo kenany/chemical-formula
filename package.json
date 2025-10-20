@@ -28,7 +28,6 @@
   },
   "dependencies": {
     "chemical-symbols": "^3.0.0",
-    "lodash.forown": "^4.4.0",
     "lodash.indexof": "^4.0.5",
     "lodash.isfinite": "^3.3.2"
   },
