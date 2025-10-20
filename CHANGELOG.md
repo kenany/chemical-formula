@@ -1,3 +1,13 @@
+## [5.0.0](https://github.com/kenany/chemical-formula/compare/4.0.3...5.0.0) (2025-10-20)
+
+### ⚠ BREAKING CHANGES
+
+* Node.js v18 is no longer supported.
+
+### Features
+
+* drop Node.js v18 support ([ccfd56b](https://github.com/kenany/chemical-formula/commit/ccfd56b527092411ef6e11e12a4eec9549fe8013))
+
 ## [4.0.3](https://github.com/kenany/chemical-formula/compare/4.0.2...4.0.3) (2025-10-20)
 
 ### Bug Fixes
