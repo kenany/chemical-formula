@@ -1,6 +1,6 @@
 {
   "name": "chemical-formula",
-  "version": "4.0.2",
+  "version": "4.0.3",
   "description": "Parse a chemical formula to get a count of each element in a compound",
   "keywords": [
     "chemistry"

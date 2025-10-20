@@ -1,3 +1,9 @@
+## [4.0.3](https://github.com/kenany/chemical-formula/compare/4.0.2...4.0.3) (2025-10-20)
+
+### Bug Fixes
+
+* remove unused lodash.forown dependency ([7c0d9db](https://github.com/kenany/chemical-formula/commit/7c0d9db9d02778a10519c619f309ec3e17e1d33f))
+
 ## [4.0.2](https://github.com/kenany/chemical-formula/compare/4.0.1...4.0.2) (2025-10-20)
 
 ### Bug Fixes
