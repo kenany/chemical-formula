@@ -1,3 +1,9 @@
+## [4.0.2](https://github.com/kenany/chemical-formula/compare/4.0.1...4.0.2) (2025-10-20)
+
+### Bug Fixes
+
+* correct subscript multiplication in nested parentheses ([15a2f76](https://github.com/kenany/chemical-formula/commit/15a2f7694a3232fdf0a83a31340ae178e8bad655))
+
 ## [4.0.1](https://github.com/kenany/chemical-formula/compare/4.0.0...4.0.1) (2023-10-18)
 
 
