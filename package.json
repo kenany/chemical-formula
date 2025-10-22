@@ -34,13 +34,13 @@
   "devDependencies": {
     "@biomejs/biome": "2.2.6",
     "@kenan/biome-config": "1.0.4",
-    "@semantic-release/changelog": "^6.0.3",
-    "@semantic-release/git": "^10.0.1",
-    "conventional-changelog-conventionalcommits": "^9.1.0",
-    "lodash.foreach": "^4.5.0",
-    "lodash.isfunction": "^3.0.9",
-    "nyc": "^17.1.0",
-    "semantic-release": "^25.0.0",
-    "tape": "^5.9.0"
+    "@semantic-release/changelog": "6.0.3",
+    "@semantic-release/git": "10.0.1",
+    "conventional-changelog-conventionalcommits": "9.1.0",
+    "lodash.foreach": "4.5.0",
+    "lodash.isfunction": "3.0.9",
+    "nyc": "17.1.0",
+    "semantic-release": "25.0.1",
+    "tape": "5.9.0"
   }
 }
