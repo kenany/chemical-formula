@@ -33,7 +33,7 @@
   },
   "devDependencies": {
     "@biomejs/biome": "2.2.6",
-    "@kenan/biome-config": "1.0.4",
+    "@kenan/biome-config": "1.0.5",
     "@semantic-release/changelog": "6.0.3",
     "@semantic-release/git": "10.0.1",
     "conventional-changelog-conventionalcommits": "9.1.0",
