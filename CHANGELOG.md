@@ -1,3 +1,9 @@
+## [5.1.0](https://github.com/kenany/chemical-formula/compare/5.0.0...5.1.0) (2025-11-04)
+
+### Features
+
+* add dot notation support for hydrate formulas ([a5e4e2a](https://github.com/kenany/chemical-formula/commit/a5e4e2a65c1d4656d002118e268669e534d39e9f))
+
 ## [5.0.0](https://github.com/kenany/chemical-formula/compare/4.0.3...5.0.0) (2025-10-20)
 
 ### ⚠ BREAKING CHANGES
