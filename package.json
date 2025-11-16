@@ -32,8 +32,8 @@
     "lodash.isfinite": "^3.3.2"
   },
   "devDependencies": {
-    "@biomejs/biome": "2.2.6",
-    "@kenan/biome-config": "1.0.5",
+    "@biomejs/biome": "2.3.5",
+    "@kenan/biome-config": "1.0.6",
     "@semantic-release/changelog": "6.0.3",
     "@semantic-release/git": "10.0.1",
     "conventional-changelog-conventionalcommits": "9.1.0",
