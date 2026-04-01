@@ -216,7 +216,7 @@ function chemicalFormula(formula) {
         // - New scopeMultiplier: scopeMultiplier (unchanged)
         //   (so nested parentheses will cascade correctly)
         // Example: (CuSO4·5H2O)2 → H2O gets multiplier=5*2=10 because scopeMultiplier=2
-        const hydrateFormula = str.substring(i);
+        const hydrateFormula = str.slice(i);
 
         // Re-normalize to catch leading/trailing/consecutive hydrate separators introduced by slicing
         const normalizedHydrate = normalizeAndValidate(hydrateFormula);
@@ -250,7 +250,7 @@ function chemicalFormula(formula) {
         }
 
         // Extract the content between parentheses
-        const groupContent = str.substring(i + 1, j - 1);
+        const groupContent = str.slice(i + 1, j - 1);
 
         // Check for empty parentheses
         if (groupContent.length === 0) {
