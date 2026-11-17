@@ -5,27 +5,27 @@ Parse a chemical formula to get a count of each element in a compound.
 ## Example
 
 ```javascript
-const chemicalFormula = require("chemical-formula");
+const chemicalFormula = require('chemical-formula');
 
 // Simple formulas
-chemicalFormula("H2O");
+chemicalFormula('H2O');
 // => {H: 2, O: 1}
 
-chemicalFormula("HOCH2CH2OH");
+chemicalFormula('HOCH2CH2OH');
 // => {H: 6, O: 2, C: 2}
 
 // Parentheses with multipliers
-chemicalFormula("Ca(OH)2");
+chemicalFormula('Ca(OH)2');
 // => {Ca: 1, O: 2, H: 2}
 
-chemicalFormula("Al2(SO4)3");
+chemicalFormula('Al2(SO4)3');
 // => {Al: 2, S: 3, O: 12}
 
-chemicalFormula("Mg(NO3)2");
+chemicalFormula('Mg(NO3)2');
 // => {Mg: 1, N: 2, O: 6}
 
 // Nested parentheses
-chemicalFormula("Mg3(Fe(CN)6)2");
+chemicalFormula('Mg3(Fe(CN)6)2');
 // => {Mg: 3, Fe: 2, C: 12, N: 12}
 
 // Hydrates with dot notation
@@ -61,6 +61,7 @@ Use middle dot (·, U+00B7) for hydrate formulas like `CuSO4·5H2O`.
 Period (`.`) is accepted for convenience (e.g., `MgSO4.7H2O`), but `·` is preferred.
 
 **Requirements:**
+
 - Multipliers must be positive integers
 - Decimals and fractions are not yet supported
 - Dots must have content on both sides (no leading/trailing/consecutive dots)
@@ -71,7 +72,7 @@ Note: Future support for decimal coefficients may affect period interpretation.
 ## API
 
 ```javascript
-const chemicalFormula = require("chemical-formula");
+const chemicalFormula = require('chemical-formula');
 ```
 
 ### `chemicalFormula(formula)`
